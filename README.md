@@ -1,4 +1,7 @@
 # carbonsh
+![Tests](https://github.com/MrMarble/carbonsh/workflows/Python%20package/badge.svg?branch=master)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/carbonsh)
+![PyPI](https://img.shields.io/pypi/v/carbonsh)
 
 Python module for carbon.now.sh
 
