@@ -2,6 +2,7 @@
 ![Tests](https://github.com/MrMarble/carbonsh/workflows/Tests/badge.svg?branch=master)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/carbonsh)
 ![PyPI](https://img.shields.io/pypi/v/carbonsh)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/carbonsh)
 
 Python module for carbon.now.sh
 
