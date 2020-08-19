@@ -6,6 +6,7 @@ name: Tests
 on:
   push:
     branches: [ master ]
+    paths: [carbonsh, tests]
   pull_request:
     branches: [ master ]
 
