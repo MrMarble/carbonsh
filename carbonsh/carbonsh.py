@@ -1,11 +1,13 @@
 import platform
 import urllib.parse
+
 from pyppeteer import launch
 
 from .Config import Config
 
 _carbon_url = 'https://carbon.now.sh/'
 _directory_separator = "\\" if platform.system() == 'Windows' else '/'
+
 
 def code_to_url(code: str, config: Config) -> str:
     code = urllib.parse.quote(code, safe='')

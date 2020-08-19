@@ -1,0 +1,9 @@
+[flake8]
+ignore = E501
+exclude =
+    .git,
+    tests,
+    dist,
+    .github,
+    venv
+    __init__.py
