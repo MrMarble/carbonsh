@@ -18,5 +18,6 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=requirements,
-    tests_require=['pytest>=6.0.1<7']
+    tests_require=['pytest>=6.0.1<7'],
+    python_requires=">=3.6"
 )
