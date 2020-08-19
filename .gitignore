@@ -3,3 +3,6 @@
 venv
 .idea
 **/__pycache__
+dist
+build
+carbonsh.egg-info
