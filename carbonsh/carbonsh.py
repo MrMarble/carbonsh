@@ -1,11 +1,11 @@
+import platform
 import urllib.parse
-
 from pyppeteer import launch
 
 from .Config import Config
 
 _carbon_url = 'https://carbon.now.sh/'
-
+_directory_separator = "\\" if platform.system() == 'Windows' else '/'
 
 def code_to_url(code: str, config: Config) -> str:
     code = urllib.parse.quote(code, safe='')
@@ -25,7 +25,7 @@ async def url_to_file(url: str, location: str, extension='png', headless=False, 
         element_bounds = await export_container.boundingBox()
 
         await export_container.screenshot({
-            'path': f'{location}\\carbon.png',
+            'path': f'{location}{_directory_separator}carbon.png',
             'clip': {
                 **element_bounds,
                 'x': round(element_bounds['x']),
@@ -35,7 +35,7 @@ async def url_to_file(url: str, location: str, extension='png', headless=False, 
     else:
         await page._client.send('Page.setDownloadBehavior', {
             'behavior': 'allow',
-            'downloadPath': f'{location}\\'
+            'downloadPath': f'{location}{_directory_separator}'
         })
 
         save_image_trigger = await page.waitForSelector('#export-menu')

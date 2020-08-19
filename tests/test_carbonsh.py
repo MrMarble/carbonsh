@@ -1,9 +1,9 @@
 import asyncio
+import platform
+import pytest
 import tempfile
 from os.path import isfile
 from unittest import TestCase, main
-
-import pytest
 
 from carbonsh.Config import Config
 from carbonsh.carbonsh import code_to_url, url_to_file
@@ -18,11 +18,12 @@ class Test(TestCase):
 
 
 class TestPng(TestCase):
+    separator = "\\" if platform.system() == 'Windows' else '/'
     @pytest.mark.skip(reason="Cant't test this on CI")
     def test_url_to_file(self):
         url = code_to_url('const test = "testing"', Config())
         temp = tempfile.TemporaryDirectory()
-        temp_path = f'{temp.name}\\'
+        temp_path = f'{temp.name}{self.separator}'
         loop = asyncio.get_event_loop()
         loop.run_until_complete(url_to_file(url, temp_path, headless=False))
         self.assertTrue(isfile(f'{temp_path}carbon.png'))
@@ -31,7 +32,7 @@ class TestPng(TestCase):
     def test_url_to_file_headless(self):
         url = code_to_url('const test = "testing headless"', Config())
         temp = tempfile.TemporaryDirectory()
-        temp_path = f'{temp.name}\\'
+        temp_path = f'{temp.name}{self.separator}'
         loop = asyncio.get_event_loop()
         loop.run_until_complete(url_to_file(url, temp_path, headless=True))
         self.assertTrue(isfile(f'{temp_path}carbon.png'))
@@ -43,16 +44,17 @@ class TestSvg(TestCase):
     def test_url_to_file(self):
         url = code_to_url('const test = "testing"', Config())
         temp = tempfile.TemporaryDirectory()
-        temp_path = f'{temp.name}\\'
+        temp_path = f'{temp.name}{self.separator}'
         loop = asyncio.get_event_loop()
         loop.run_until_complete(url_to_file(url, temp_path, extension='svg', headless=False))
         self.assertTrue(isfile(f'{temp_path}carbon.svg'))
         temp.cleanup()
 
+    @pytest.mark.skip(reason="Headless can't make svg")
     def test_url_to_file_headless(self):
         url = code_to_url('const test = "testing headless"', Config())
         temp = tempfile.TemporaryDirectory()
-        temp_path = f'{temp.name}\\'
+        temp_path = f'{temp.name}{self.separator}'
         loop = asyncio.get_event_loop()
         loop.run_until_complete(url_to_file(url, temp_path, extension='svg', headless=True))
         self.assertTrue(isfile(f'{temp_path}carbon.svg'))
