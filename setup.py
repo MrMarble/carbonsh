@@ -8,12 +8,12 @@ with open('requirements.txt', 'r') as fh:
 
 setup(
     name='carbonsh',
-    version='0.0.4',
+    version='0.0.5',
     packages=['carbonsh'],
     url='https://github.com/MrMarble/carbonsh',
     license='GPL-3.0-or-later',
     author='MrMarble',
-    author_email='',
+    author_email='alvarotinocomarmol@gmail.com',
     description='carbon.now.sh python module',
     long_description=long_description,
     long_description_content_type="text/markdown",
