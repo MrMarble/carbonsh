@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.md', 'r') as fh:
     long_description = fh.read()
@@ -9,7 +9,7 @@ with open('requirements.txt', 'r') as fh:
 setup(
     name='carbonsh',
     version='0.0.6',
-    packages=['carbonsh'],
+    packages=find_packages(),
     url='https://github.com/MrMarble/carbonsh',
     license='GPL-3.0-or-later',
     author='MrMarble',
