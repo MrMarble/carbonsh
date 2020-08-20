@@ -8,7 +8,7 @@ with open('requirements.txt', 'r') as fh:
 
 setup(
     name='carbonsh',
-    version='0.0.3',
+    version='0.0.4',
     packages=['carbonsh'],
     url='https://github.com/MrMarble/carbonsh',
     license='GPL-3.0-or-later',
