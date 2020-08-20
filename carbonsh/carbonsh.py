@@ -1,7 +1,7 @@
 import platform
 import urllib.parse
 
-from pyppeteer import launch
+from pyppeteer import launch, executablePath
 
 from .Config import Config
 
@@ -14,8 +14,9 @@ def code_to_url(code: str, config: Config) -> str:
     return f'{_carbon_url}?{config}&code={code}'
 
 
-async def url_to_file(url: str, location: str, extension='png', headless=False, timeout=2000):
-    browser = await launch({'headless': headless})
+async def url_to_file(url: str, location: str, extension='png', headless=False, timeout=2000,
+                      executable_path=executablePath()):
+    browser = await launch({'headless': headless}, executablePath=executable_path)
     page = await browser.newPage()
 
     await page.setViewport({'width': 1600, 'height': 1000, 'deviceScaleFactor': 2.0})
@@ -55,6 +56,7 @@ async def url_to_file(url: str, location: str, extension='png', headless=False, 
         await browser.close()
 
 
-async def code_to_file(code: str, config: Config, location: str, extension='png', headless=False, timeout=2000):
+async def code_to_file(code: str, config: Config, location: str, extension='png', headless=False, timeout=2000,
+                       executable_path=executablePath()):
     url = code_to_url(code, config)
-    await url_to_file(url, location, extension, headless, timeout)
+    await url_to_file(url, location, extension, headless, timeout, executable_path)
