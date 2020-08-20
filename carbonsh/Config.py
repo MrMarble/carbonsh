@@ -1,7 +1,7 @@
 import urllib.parse
 
-from carbonsh.constants import themes, controls, languages, fonts, escales
-from carbonsh.utils import hex_to_rgb
+from .constants import themes, controls, languages, fonts, escales
+from .utils import hex_to_rgb
 
 
 def parse_bg(background) -> str:
