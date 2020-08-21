@@ -1,9 +1,10 @@
 import asyncio
 import platform
-import pytest
 import tempfile
 from os.path import isfile
 from unittest import TestCase, main
+
+import pytest
 
 from carbonsh.Config import Config
 from carbonsh.carbonsh import code_to_url, url_to_file
@@ -19,6 +20,7 @@ class Test(TestCase):
 
 class TestPng(TestCase):
     separator = "\\" if platform.system() == 'Windows' else '/'
+
     @pytest.mark.skip(reason="Cant't test this on CI")
     def test_url_to_file(self):
         url = code_to_url('const test = "testing"', Config())
