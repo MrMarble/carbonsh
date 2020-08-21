@@ -26,5 +26,7 @@ class TestConfig(TestCase):
 
         config = Config(language=languages.JAVASCRIPT)
         self.assertEqual(str(config), expect, msg='Default does not match')
+
+
 if __name__ == '__main__':
     main()
