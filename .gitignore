@@ -6,3 +6,5 @@ venv
 dist
 build
 carbonsh.egg-info
+.vscode
+.devcontainer
