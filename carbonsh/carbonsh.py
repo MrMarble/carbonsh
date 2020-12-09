@@ -4,12 +4,12 @@ from typing import Any
 from pyppeteer import launch
 
 from .Config import Config
-from .utils import encode_url
+from .utils import encode_url, trim_url
 _carbon_url = 'https://carbon.now.sh/'
 
 
 def code_to_url(code: str, config: Config) -> str:
-    return f'{_carbon_url}?{config}&code={encode_url(code[:2000])}'
+    return f'{_carbon_url}?{config}&code={trim_url(encode_url(code))}'
 
 
 async def url_to_file(url: str, location: str, extension='png', headless=False, timeout=2000, **kwargs: Any):

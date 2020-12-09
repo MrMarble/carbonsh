@@ -8,7 +8,7 @@ import pytest
 
 from carbonsh.Config import Config
 from carbonsh.carbonsh import code_to_url, url_to_file
-from carbonsh.utils import encode_url
+from carbonsh.utils import encode_url, trim_url
 
 
 class Test(TestCase):
@@ -16,6 +16,15 @@ class Test(TestCase):
         url = r'{"text":"\u003cb\uf003eyou\u003c", "test":";/.^%*@({})ñ"}'
         expected = '%257B%2522text%2522%253A%2522%255Cu003cb%255Cuf003eyou%255Cu003c%2522%252C%2520%2522test%2522%253A%2522%253B%252F.%255E%2525*%2540%28%257B%257D%29%25C3%25B1%2522%257D'
         self.assertEqual(expected, encode_url(url))
+
+    def test_url_trimming(self):
+        text = 'A' * 3000
+        expected = 'A' * 2000
+        self.assertEqual(expected, trim_url(text))
+
+        text = '%2540' * 1000
+        expected = '%2540-' * 400
+        self.assertEqual(1995, len(trim_url(text)))
 
     def test_code_to_url(self):
         code = 'const test = "testing"'
