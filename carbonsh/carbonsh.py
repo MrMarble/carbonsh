@@ -1,17 +1,15 @@
-import urllib.parse
 from pathlib import Path
 from typing import Any
 
 from pyppeteer import launch
 
 from .Config import Config
-
+from .utils import encode_url
 _carbon_url = 'https://carbon.now.sh/'
 
 
 def code_to_url(code: str, config: Config) -> str:
-    code = urllib.parse.quote(code, safe='')
-    return f'{_carbon_url}?{config}&code={code}'
+    return f'{_carbon_url}?{config}&code={encode_url(code[:2000])}'
 
 
 async def url_to_file(url: str, location: str, extension='png', headless=False, timeout=2000, **kwargs: Any):
