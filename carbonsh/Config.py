@@ -9,6 +9,7 @@ def parse_bg(background) -> str:
         return 'rgba(171, 184, 195, 1)'
     elif background[0] == '#' or '(' not in background:
         return f'rgba{hex_to_rgb(background) + (1,)}'
+    return background
 
 
 def int_to_px(number) -> str:
