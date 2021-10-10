@@ -52,10 +52,10 @@ class TestPng(TestCase):
     def test_url_to_file_headless(self):
         url = code_to_url('const test = "testing headless"', Config())
         temp = tempfile.TemporaryDirectory()
-        temp_path = Path(temp.name).joinpath('')
+        temp_path = Path(temp.name).joinpath('carbon.png')
         loop = asyncio.get_event_loop()
         loop.run_until_complete(url_to_file(url, temp_path, headless=True))
-        self.assertTrue(isfile(temp_path.joinpath('carbon.png')))
+        self.assertTrue(isfile(temp_path))
         temp.cleanup()
 
 
