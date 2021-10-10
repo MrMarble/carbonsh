@@ -27,7 +27,8 @@ async def url_to_file(url: str, location: str, extension='png', headless=False, 
         element_bounds = await export_container.boundingBox()
 
         await export_container.screenshot({
-            'path': str(location.joinpath('carbon.png')),
+            'path': str(location.joinpath('')),
+            'type': extension,
             'clip': {
                 **element_bounds,
                 'x': round(element_bounds['x']),
